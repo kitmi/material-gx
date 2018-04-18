@@ -1,5 +1,6 @@
 import React from "react"
 import { MuiThemeProvider, createMuiTheme } from "material-ui/styles"
+import CssBaseline from 'material-ui/CssBaseline';
 
 const createTheme = (Component, themeSetting) => {
     const theme = typeof themeSetting === "function" ? themeSetting : createMuiTheme(themeSetting)
