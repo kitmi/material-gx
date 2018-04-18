@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="HolyGrail-root-1"
+>
+  <div
+    className="HolyGrail-headerFooter-2"
+  >
+    <div>
+      header
+    </div>
+  </div>
+  <div
+    className="HolyGrail-body-3"
+  >
+    <div
+      className="HolyGrail-content-4"
+    >
+      <div>
+        content
+      </div>
+    </div>
+    <div
+      className="HolyGrail-left-5 HolyGrail-side-6"
+    >
+      <div>
+        left sidebar
+      </div>
+    </div>
+    <div
+      className="HolyGrail-side-6"
+    >
+      <div>
+        right sidebar
+      </div>
+    </div>
+  </div>
+  <div
+    className="HolyGrail-headerFooter-2"
+  >
+    <div>
+      footer
+    </div>
+  </div>
+</div>
+`;

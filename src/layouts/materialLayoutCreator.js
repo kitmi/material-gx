@@ -64,7 +64,7 @@ Material.propTypes = {
 }
 
 /**
- * Create a material style layout, i.e. content with a collapsible sidebar drawer
+ * Create a material style layout, i.e. frame with a collapsible sidebar drawer
  * @param {int} sidebarWidth
  * @param {int} sidebarCollapsedWidth
  * @return {Material}

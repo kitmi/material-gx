@@ -29,4 +29,8 @@ HolyGrail.propTypes = {
     footer: PropTypes.node.isRequired
 }
 
+/**
+ * Create a HolyGrail layout, i.e. frame with two sidebars on the left and right
+ * @param sideWidth
+ */
 export default sideWidth => withStyles($holyGrailStyles(sideWidth))(HolyGrail)
