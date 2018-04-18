@@ -1,7 +1,9 @@
 {
   "presets": ["./scripts/material-mowa-babel-preset", "stage-1", "react"],
   "plugins": [
-    "transform-object-assign"
+    "transform-object-assign",
+    "transform-decorators-legacy",
+    "transform-class-properties"
   ],
   "env": {
     "coverage": {
