@@ -1,2 +1,2 @@
-# material-gx
-Material UI Components
+# material-mowa
+Material-UI style Layouts and Components package

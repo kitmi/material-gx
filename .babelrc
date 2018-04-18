@@ -1,0 +1,69 @@
+{
+  "presets": ["./scripts/material-mowa-babel-preset", "stage-1", "react"],
+  "plugins": [
+    "transform-object-assign"
+  ],
+  "env": {
+    "coverage": {
+      "plugins": [
+        "istanbul",
+        [
+          "module-resolver",
+          {
+            "root": ["./"],
+            "alias": {
+              "material-mowa": "./src"
+            }
+          }
+        ]
+      ]
+    },
+    "development": {
+      "sourceMaps": "both",
+      "plugins": [
+        "transform-flow-strip-types"
+      ]
+    },
+    "es": {
+      "plugins": [
+        "transform-react-constant-elements",
+        "transform-dev-warning",
+        "transform-runtime",
+        ["transform-react-remove-prop-types", {
+          "mode": "wrap",
+          "plugins": [
+            "babel-plugin-transform-flow-strip-types"
+          ]
+        }]
+      ]
+    },
+    "production": {
+      "plugins": [
+        "transform-react-constant-elements",
+        "transform-dev-warning",
+        "transform-runtime",
+        ["transform-react-remove-prop-types", {
+          "mode": "wrap",
+          "plugins": [
+            "babel-plugin-transform-flow-strip-types"
+          ]
+        }]
+      ]
+    },
+    "test": {
+      "sourceMaps": "both",
+      "plugins": [
+        "transform-flow-strip-types",
+        [
+          "module-resolver",
+          {
+            "root": ["./"],
+            "alias": {
+              "material-mowa": "./src"
+            }
+          }
+        ],
+      ]
+    }
+  }
+}

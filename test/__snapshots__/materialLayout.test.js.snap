@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="Material-root-1"
+>
+  <div>
+    <div
+      className="MuiDrawer-docked-9"
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+    >
+      <div
+        className="MuiPaper-root-20 MuiPaper-elevation0-22 MuiDrawer-paper-10 Material-drawerPaper-2 MuiDrawer-paperAnchorLeft-11 MuiDrawer-paperAnchorDockedLeft-15"
+      >
+        <div>
+          sidebar
+        </div>
+      </div>
+    </div>
+  </div>
+  <main
+    className="Material-mainPanel-4"
+  >
+    <div
+      className="Material-content-6"
+    >
+      <div
+        className="Material-container-7"
+      >
+        <div>
+          content
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+`;

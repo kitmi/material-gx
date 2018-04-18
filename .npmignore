@@ -1,0 +1,7 @@
+/node_modules/
+test/
+*.patch
+src
+webpack.config.js
+*.html
+.babelrc
