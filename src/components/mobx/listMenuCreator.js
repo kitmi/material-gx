@@ -4,6 +4,7 @@ import { withStyles } from 'material-ui/styles';
 import { observer } from 'mobx-react';
 import { NavLink } from "react-router-dom";
 import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
+import ListSubheader from 'material-ui/List/ListSubheader';
 import Collapse from 'material-ui/transitions/Collapse';
 
 const $styles = maxLevel => theme => {
