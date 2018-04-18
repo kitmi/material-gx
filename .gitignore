@@ -27,5 +27,4 @@ Thumbs.db
 ######################
 build
 node_modules
-package-lock.json
 test/build/main.bundle.js
