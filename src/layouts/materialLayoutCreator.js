@@ -1,45 +1,32 @@
-import React from "react"
-import PropTypes from "prop-types"
-import cx from "classnames"
-import withStyles from "material-ui/styles/withStyles"
+import React from 'react';
+import PropTypes from 'prop-types';
+import cx from 'classnames';
+import { observer } from 'mobx-react';
+import withStyles from 'material-ui/styles/withStyles';
 
-import Sidebar from "../components/Sidebar"
+import Sidebar, { SidebarController } from '../components/mobx/Sidebar';
 
-import $materialStyles from "../assets/jss/layouts/materialStyles"
+import $materialStyles from '../assets/jss/layouts/materialStyles';
 
-class Material extends React.PureComponent {
-    state = {
-        mobileOpen: false,
-        miniActive: false
-    }
-
-    handleDrawerToggle = () => {
-        this.setState({ mobileOpen: !this.state.mobileOpen })
-    }
-
-    sidebarMinimize = () => {
-        this.setState({ miniActive: !this.state.miniActive })
-    }
-
+@observer
+class Material extends React.Component {
     constructor(props) {
-        super(props)
+        super(props);
     }
 
     render() {
-        const { classes, content, sidebar, header, footer } = this.props
+        const { classes, content, sidebar, header, footer, sidebarController } = this.props;
 
         const mainPanel = cx(classes.mainPanel, {
-            [classes.mainPanelSidebarMini]: this.state.miniActive
-        })
+            [classes.mainPanelSidebarMini]: sidebarController.sidebarMini
+        });
 
         return (
             <div className={classes.root}>
                 <Sidebar
                     drawerStyle={classes.drawerPaper}
                     drawerCollapsedStyle={classes.drawerPaperCollapsed}
-                    handleDrawerToggle={this.handleDrawerToggle}
-                    open={this.state.mobileOpen}
-                    miniActive={this.state.miniActive}
+                    controller={sidebarController}
                     content={sidebar}
                 />
 
@@ -51,7 +38,7 @@ class Material extends React.PureComponent {
                     {footer !== undefined && footer}
                 </main>
             </div>
-        )
+        );
     }
 }
 
@@ -59,9 +46,10 @@ Material.propTypes = {
     classes: PropTypes.object.isRequired,
     content: PropTypes.element.isRequired,
     sidebar: PropTypes.element.isRequired,
+    sidebarController: PropTypes.instanceOf(SidebarController).isRequired,
     header: PropTypes.element,
     footer: PropTypes.element
-}
+};
 
 /**
  * Create a material style layout, i.e. frame with a collapsible sidebar drawer
@@ -70,4 +58,4 @@ Material.propTypes = {
  * @return {Material}
  */
 export default (sidebarWidth, sidebarCollapsedWidth) =>
-    withStyles($materialStyles(sidebarWidth, sidebarCollapsedWidth))(Material)
+    withStyles($materialStyles(sidebarWidth, sidebarCollapsedWidth))(Material);

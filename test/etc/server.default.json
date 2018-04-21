@@ -1,0 +1,35 @@
+{
+    "settings": {
+        "cli": {
+            "general": {
+                "consoleEnabled": true,
+                "consoleLogLevel": "verbose",
+                "consoleLogColorize": true,
+                "fileLogEnabled": true,
+                "fileLogLevel": "verbose",
+                "fileLogFilename": "mowa-cli.log",
+                "fileLogOverwrite": true,
+                "verbose": true
+            }
+        }
+    },
+    "loggers": {
+        "general": {
+            "transports": [
+                {
+                    "type": "console",
+                    "options": {
+                        "level": "verbose",
+                        "colorize": true
+                    }
+                }
+            ]
+        }
+    },
+    "koa": {
+        "httpPort": 3000
+    },
+    "middlewares": {
+        "serveStatic": { "root": "test/build" }
+    }
+}

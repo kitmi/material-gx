@@ -1,45 +1,45 @@
 const flexBox = (vertical, hAlign, vAlign, wrap, alignContent) => {
     let styles = {
-        display: "flex"
-    }
+        display: 'flex'
+    };
 
-    let hAttr, vAttr
+    let hAttr, vAttr;
 
     if (vertical) {
-        styles.flexDirection = "column"
-        hAttr = alignContent ? "alignContent" : "alignItems"
-        vAttr = "justifyContent"
+        styles.flexDirection = 'column';
+        hAttr = alignContent ? 'alignContent' : 'alignItems';
+        vAttr = 'justifyContent';
     } else {
-        vAttr = alignContent ? "alignContent" : "alignItems"
-        hAttr = "justifyContent"
+        vAttr = alignContent ? 'alignContent' : 'alignItems';
+        hAttr = 'justifyContent';
     }
 
-    if (hAlign === "left") {
-        hAlign = "flex-start"
-    } else if (hAlign === "right") {
-        hAlign = "flex-end"
+    if (hAlign === 'left') {
+        hAlign = 'flex-start';
+    } else if (hAlign === 'right') {
+        hAlign = 'flex-end';
     }
 
-    if (hAlign && hAlign !== "flex-start") {
-        styles[hAttr] = hAlign
+    if (hAlign && hAlign !== 'flex-start') {
+        styles[hAttr] = hAlign;
     }
 
-    if (vAlign === "top") {
-        vAlign = "flex-start"
-    } else if (vAlign === "bottom") {
-        vAlign = "flex-end"
+    if (vAlign === 'top') {
+        vAlign = 'flex-start';
+    } else if (vAlign === 'bottom') {
+        vAlign = 'flex-end';
     }
 
-    if (vAlign && vAlign !== "stretch") {
-        styles[vAttr] = vAlign
+    if (vAlign && vAlign !== 'stretch') {
+        styles[vAttr] = vAlign;
     }
 
     if (wrap) {
-        styles.flexWrap = "wrap"
+        styles.flexWrap = 'wrap';
     }
 
-    return styles
-}
+    return styles;
+};
 
 /**
  * Create a horizontal box style set.
@@ -55,8 +55,8 @@ const flexBox = (vertical, hAlign, vAlign, wrap, alignContent) => {
  *   {@link https://developer.mozilla.org/en-US/docs/Web/CSS/align-content}
  * @return {object}
  */
-const $hBox = (vAlign = "stretch", hAlign = "flex-start", wrap = false, alignContent = false) =>
-    flexBox(false, hAlign, vAlign, wrap, alignContent)
+const $hBox = (vAlign = 'stretch', hAlign = 'flex-start', wrap = false, alignContent = false) =>
+    flexBox(false, hAlign, vAlign, wrap, alignContent);
 
 /**
  * Create a vertical box style set.
@@ -72,26 +72,26 @@ const $hBox = (vAlign = "stretch", hAlign = "flex-start", wrap = false, alignCon
  *   {@link https://developer.mozilla.org/en-US/docs/Web/CSS/align-content}
  * @return {object}
  */
-const $vBox = (hAlign = "stretch", vAlign = "flex-start", wrap = false, alignContent = false) =>
-    flexBox(true, hAlign, vAlign, wrap, alignContent)
+const $vBox = (hAlign = 'stretch', vAlign = 'flex-start', wrap = false, alignContent = false) =>
+    flexBox(true, hAlign, vAlign, wrap, alignContent);
 
 const $vAlignInHBox = vAlign => {
-    if (vAlign === "top") {
-        vAlign = "flex-start"
-    } else if (vAlign === "bottom") {
-        vAlign = "flex-end"
+    if (vAlign === 'top') {
+        vAlign = 'flex-start';
+    } else if (vAlign === 'bottom') {
+        vAlign = 'flex-end';
     }
 
-    return { alignSelf: vAlign }
-}
+    return { alignSelf: vAlign };
+};
 const $hAlignInVBox = hAlign => {
-    if (hAlign === "left") {
-        hAlign = "flex-start"
-    } else if (hAlign === "right") {
-        hAlign = "flex-end"
+    if (hAlign === 'left') {
+        hAlign = 'flex-start';
+    } else if (hAlign === 'right') {
+        hAlign = 'flex-end';
     }
 
-    return { alignSelf: hAlign }
-}
+    return { alignSelf: hAlign };
+};
 
-export { $hBox, $vBox, $hAlignInVBox, $vAlignInHBox }
+export { $hBox, $vBox, $hAlignInVBox, $vAlignInHBox };

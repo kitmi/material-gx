@@ -1,44 +1,44 @@
-import React from "react"
-import PropTypes from "prop-types"
-import cx from "classnames"
-import Drawer from "material-ui/Drawer"
-import Hidden from "material-ui/Hidden"
+import React from 'react';
+import PropTypes from 'prop-types';
+import { observable, action } from 'mobx';
+import { observer } from 'mobx-react';
+import cx from 'classnames';
+import Drawer from 'material-ui/Drawer';
+import Hidden from 'material-ui/Hidden';
 
-class Sidebar extends React.PureComponent {
-    state = {
-        miniActive: true
-    }
+class SidebarController {
+    @observable sidebarMini = false;
+    @observable sidebarOpen = true;
 
-    onMouseOver = () => this.setState({ miniActive: false })
-    onMouseOut = () => this.setState({ miniActive: true })
+    @action toggleSidebarMini = (value) => { this.sidebarMini = (value !== undefined) ? value : !this.sidebarMini };
+    @action toggleSidebarOpen = (value) => { this.sidebarOpen = (value !== undefined) ? value : !this.sidebarOpen };
+}
 
-    constructor(props) {
-        super(props)
-    }
+@observer
+class Sidebar extends React.Component {
+    onClose = () => this.props.controller.toggleSidebarOpen(false);
 
     render() {
         const {
             drawerStyle,
             drawerCollapsedStyle,
-            open,
-            handleDrawerToggle,
-            miniActive,
+            controller,
             content
-        } = this.props
+        } = this.props;
 
         const drawerPaper = cx(drawerStyle, {
-            [drawerCollapsedStyle]: miniActive && this.state.miniActive
-        })
+            [drawerCollapsedStyle]: controller.sidebarMini
+        });
 
         return (
             <div>
                 <Hidden mdUp>
                     <Drawer
                         variant="temporary"
-                        anchor="left"
-                        open={open}
+                        anchor="right"
+                        open={controller.sidebarOpen}
                         classes={{ paper: drawerPaper }}
-                        onClose={handleDrawerToggle}
+                        onClose={this.onClose}
                         ModalProps={{
                             keepMounted: true // Better open performance on mobile.
                         }}
@@ -48,8 +48,6 @@ class Sidebar extends React.PureComponent {
                 </Hidden>
                 <Hidden smDown>
                     <Drawer
-                        onMouseOver={this.onMouseOver}
-                        onMouseOut={this.onMouseOut}
                         anchor="left"
                         variant="permanent"
                         open
@@ -59,17 +57,16 @@ class Sidebar extends React.PureComponent {
                     </Drawer>
                 </Hidden>
             </div>
-        )
+        );
     }
 }
 
 Sidebar.propTypes = {
     drawerStyle: PropTypes.string.isRequired,
     drawerCollapsedStyle: PropTypes.string.isRequired,
-    open: PropTypes.bool.isRequired,
-    handleDrawerToggle: PropTypes.func.isRequired,
-    miniActive: PropTypes.bool.isRequired,
+    controller: PropTypes.instanceOf(SidebarController).isRequired,
     content: PropTypes.element.isRequired
-}
+};
 
-export default Sidebar
+export default Sidebar;
+export { SidebarController };

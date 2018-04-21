@@ -3,40 +3,38 @@ const path = require('path');
 module.exports = {
     name: 'browser',
     mode: 'development',
-    entry: './test/index.js',
+    entry: {
+        index: './test/index.js'
+    },
     output: {
         path: path.resolve('./test/build'),
-        filename: "[name].bundle.js",
-        chunkFilename: "[id].bundle.js",
+        filename: '[name].bundle.js',
+        chunkFilename: '[id].bundle.js',
         publicPath: '/'
     },
     module: {
         rules: [
             {
-              test: /\.js$/,
-              exclude: /(node_modules|bower_components)/,
-              use: {
-                  loader: 'babel-loader',
-                  options: {
-                      presets: ['babel-preset-env', 'babel-preset-react'],
-                      plugins: [
-                          'transform-decorators-legacy',
-                          'transform-class-properties',
-                          'transform-object-rest-spread',
-                          'transform-function-bind',
-                          'transform-react-jsx-source',
-                          'transform-react-jsx-self'
-                      ]
-                  }
-              }
+                test: /\.js$/,
+                exclude: /(node_modules|bower_components)/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['babel-preset-env', 'babel-preset-react'],
+                        plugins: [
+                            'transform-decorators-legacy',
+                            'transform-class-properties',
+                            'transform-object-rest-spread',
+                            'transform-function-bind',
+                            'transform-react-jsx-source',
+                            'transform-react-jsx-self'
+                        ]
+                    }
+                }
             },
             {
                 test: /\.css$/,
-                use: [ "style-loader", "css-loader" ]
-            },
-            {
-                test: /\.ts$/,
-                use: 'ts-loader'
+                use: ['style-loader', 'css-loader']
             },
             {
                 test: /\.svg$/,
